@@ -1,4 +1,5 @@
 @import "./styles/variables";
+@import "./styles/mixins";
 
 *,
 *::before,
@@ -19,4 +20,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: $primaryBackgroundColor;
   color: $primaryColor;
+}
+
+.app {
+  &__header {
+    @include displayFlex(space-between, center);
+    margin-bottom: 20px;
+  }
 }
