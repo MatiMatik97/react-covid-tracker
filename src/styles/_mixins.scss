@@ -1,0 +1,44 @@
+@import "./variables";
+
+// justify, align, flexD
+@mixin displayFlex(
+  $justifyContent: initial,
+  $alignItems: initial,
+  $flexDirection: initial
+) {
+  display: flex;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  flex-direction: $flexDirection;
+}
+
+// place
+@mixin displayGrid($placeItems: initial) {
+  display: grid;
+  place-items: $placeItems;
+}
+
+// width, height, background, color
+@mixin whbc(
+  $width: initial,
+  $height: initial,
+  $background: initial,
+  $color: initial
+) {
+  width: $width;
+  height: $height;
+
+  @include bc($background, $color);
+}
+
+// background, color
+@mixin bc($background: initial, $color: initial) {
+  background: $background;
+  color: $color;
+}
+
+// margin, padding
+@mixin mp($margin: initial, $padding: initial) {
+  margin: $margin;
+  padding: $padding;
+}
