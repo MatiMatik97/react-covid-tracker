@@ -21,10 +21,3 @@ body {
   background-color: $primaryBackgroundColor;
   color: $primaryColor;
 }
-
-.app {
-  &__header {
-    @include displayFlex(space-between, center);
-    margin-bottom: 20px;
-  }
-}

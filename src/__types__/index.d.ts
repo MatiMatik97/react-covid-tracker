@@ -1,15 +1,23 @@
-interface CountryAPI {
+interface ICountryAPI {
   country: string;
   countryInfo: {
     iso2: string;
   };
 }
 
-type CountriesAPI = CountryAPI[];
+type TCountriesAPI = ICountryAPI[];
 
-interface Country {
+interface ICountry {
   name: string;
   value: string;
 }
 
-type Countries = Country[];
+type TCountries = ICountry[];
+
+type TOnCountryChange = (
+  event: React.ChangeEvent<{
+    name?: string | undefined;
+    value: unknown;
+  }>,
+  child: React.ReactNode
+) => void;
