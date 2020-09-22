@@ -11,18 +11,18 @@ const Stats: React.FC<StatsProps> = ({ countryInfo }) => {
     <div className="stats">
       <InfoBox
         title="Coronavirus Cases"
-        cases={countryInfo.cases}
-        total={countryInfo.todayCases}
+        today={countryInfo.todayCases}
+        total={countryInfo.cases}
       />
       <InfoBox
         title="Recovered"
-        cases={countryInfo.recovered}
-        total={countryInfo.todayRecovered}
+        today={countryInfo.todayRecovered}
+        total={countryInfo.recovered}
       />
       <InfoBox
         title="Deaths"
-        cases={countryInfo.deaths}
-        total={countryInfo.todayDeaths}
+        today={countryInfo.todayDeaths}
+        total={countryInfo.deaths}
       />
     </div>
   );

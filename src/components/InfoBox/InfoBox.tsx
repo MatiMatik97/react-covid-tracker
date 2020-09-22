@@ -4,11 +4,11 @@ import { Card, CardContent, Typography } from "@material-ui/core";
 
 interface InfoBoxProps {
   title: string;
-  cases: number;
+  today: number;
   total: number;
 }
 
-const InfoBox: React.FC<InfoBoxProps> = ({ title, cases, total }) => {
+const InfoBox: React.FC<InfoBoxProps> = ({ title, today, total }) => {
   return (
     <Card className="infoBox">
       <CardContent>
@@ -16,7 +16,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({ title, cases, total }) => {
           {title}
         </Typography>
 
-        <h2 className="infoBox__cases">{cases}</h2>
+        <h2 className="infoBox__today">{today}</h2>
 
         <Typography className="infoBox__total" color="textSecondary">
           {total} Total
