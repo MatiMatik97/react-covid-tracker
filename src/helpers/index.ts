@@ -1,8 +1,8 @@
 export const apiRequest = async <T>(url: string): Promise<T> => {
-  return fetch(url).then((response) => {
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
+  try {
+    const response = await fetch(url);
     return response.json() as Promise<T>;
-  });
+  } catch (error) {
+    throw new Error(error);
+  }
 };

@@ -3,6 +3,7 @@ interface ICountryAPI {
   countryInfo: {
     iso2: string;
   };
+  cases: number;
 }
 type TCountriesAPI = ICountryAPI[];
 
@@ -11,6 +12,25 @@ interface ICountry {
   value: string;
 }
 type TCountries = ICountry[];
+
+interface ITableData {
+  country: string;
+  cases: number;
+}
+type TTableData = ITableData[];
+
+interface IHistory {
+  cases: any;
+  recovered: any;
+  deaths: any;
+}
+type TCasesType = "cases" | "recovered" | "deaths";
+
+interface IChart {
+  x: string;
+  y: number;
+}
+type TChart = IChart[];
 
 interface ICountryInfo {
   todayCases: number;

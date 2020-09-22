@@ -4,6 +4,8 @@ import { Card, CardContent } from "@material-ui/core";
 import { getCountryInfo, getAllCountries } from "./helpers/country";
 import Header from "./layout/Header/Header";
 import Stats from "./layout/Stats/Stats";
+import Table from "./layout/Table/Table";
+import LineGraph from "./layout/LineGraph/LineGraph";
 
 const App: React.FC = () => {
   const [countries, setCountries] = useState<TCountries>([]);
@@ -16,6 +18,7 @@ const App: React.FC = () => {
     recovered: 0,
     deaths: 0,
   });
+  const [tableData, setTableData] = useState<TTableData>([]);
 
   const onCountryChange: TOnCountryChange = async (event) => {
     const countryCode = event.target.value;
@@ -31,7 +34,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      await getAllCountries(setCountries);
+      await getAllCountries(setCountries, setTableData);
 
       await getCountryInfo(
         "https://disease.sh/v3/covid-19/all",
@@ -54,7 +57,12 @@ const App: React.FC = () => {
       <Card className="app__right">
         <CardContent>
           <h3>Live Cases by country</h3>
+
+          <Table tableData={tableData} />
+
           <h3>Worldwide new cases</h3>
+
+          <LineGraph casesType={"cases"} />
         </CardContent>
       </Card>
     </div>
