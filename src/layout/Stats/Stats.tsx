@@ -2,12 +2,28 @@ import React from "react";
 import "./Stats.scss";
 import InfoBox from "../../components/InfoBox/InfoBox";
 
-const Stats: React.FC = () => {
+interface StatsProps {
+  countryInfo: ICountryInfo;
+}
+
+const Stats: React.FC<StatsProps> = ({ countryInfo }) => {
   return (
     <div className="stats">
-      <InfoBox title="Coronavirus Cases" total={2000} cases={3000} />
-      <InfoBox title="Recovered" total={1000} cases={3000} />
-      <InfoBox title="Deaths" total={1000} cases={3000} />
+      <InfoBox
+        title="Coronavirus Cases"
+        cases={countryInfo.cases}
+        total={countryInfo.todayCases}
+      />
+      <InfoBox
+        title="Recovered"
+        cases={countryInfo.recovered}
+        total={countryInfo.todayRecovered}
+      />
+      <InfoBox
+        title="Deaths"
+        cases={countryInfo.deaths}
+        total={countryInfo.todayDeaths}
+      />
     </div>
   );
 };

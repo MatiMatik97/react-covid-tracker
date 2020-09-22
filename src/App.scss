@@ -21,3 +21,18 @@ body {
   background-color: $primaryBackgroundColor;
   color: $primaryColor;
 }
+
+.app {
+  @include displayFlex(space-evenly);
+  padding: 20px;
+}
+
+@media (max-width: 990px) {
+  .app {
+    flex-direction: column;
+
+    &__left {
+      flex: 0.9;
+    }
+  }
+}
