@@ -4,7 +4,7 @@ import { FormControl, MenuItem, Select } from "@material-ui/core";
 
 interface HeaderProps {
   countries: TCountries;
-  onCountryChange: TOnCountryChange;
+  onCountryChange: FOnCountryChange;
   selectedCountry: string;
 }
 

@@ -34,5 +34,10 @@ body {
     &__left {
       flex: 0.9;
     }
+
+    &__left,
+    &__right {
+      margin: 10px;
+    }
   }
 }

@@ -2,8 +2,12 @@ interface ICountryAPI {
   country: string;
   countryInfo: {
     iso2: string;
+    lat: number;
+    long: number;
   };
   cases: number;
+  recovered: number;
+  deaths: number;
 }
 type TCountriesAPI = ICountryAPI[];
 
@@ -12,6 +16,15 @@ interface ICountry {
   value: string;
 }
 type TCountries = ICountry[];
+
+interface IMapCountry {
+  lat: number;
+  lon: number;
+  cases: number;
+  recovered: number;
+  deaths: number;
+}
+type TMapCountries = IMapCountry[];
 
 interface ITableData {
   country: string;
@@ -39,12 +52,21 @@ interface ICountryInfo {
   cases: number;
   recovered: number;
   deaths: number;
+  countryInfo: {
+    lat: number;
+    long: number;
+  };
 }
 
-type TOnCountryChange = (
+type FOnCountryChange = (
   event: React.ChangeEvent<{
     name?: string | undefined;
     value: unknown;
   }>,
   child: React.ReactNode
 ) => void;
+
+interface IMapCenter {
+  lat: number;
+  lng: number;
+}
