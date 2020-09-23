@@ -1,4 +1,4 @@
-import { apiRequest } from "./";
+import { apiRequest } from ".";
 
 export const getCountryInfo = async (
   url: string,
@@ -9,10 +9,12 @@ export const getCountryInfo = async (
     .then((response: ICountryInfo) => {
       setCountryInfo(response);
 
-      setMapCenter({
-        lat: response.countryInfo.lat,
-        lng: response.countryInfo.long,
-      });
+      if (!url.includes("all")) {
+        setMapCenter({
+          lat: response.countryInfo.lat,
+          lng: response.countryInfo.long,
+        });
+      }
     })
     .catch((error: string) => {
       console.error(error);
@@ -44,8 +46,10 @@ export const getAllCountries = async (
 
       const _countries3 = response.map((country) => {
         return {
+          name: country.country,
           lat: country.countryInfo.lat,
           lon: country.countryInfo.long,
+          flag: country.countryInfo.flag,
           cases: country.cases,
           recovered: country.recovered,
           deaths: country.deaths,

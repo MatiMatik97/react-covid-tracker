@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./LineGraph.scss";
 import { Line } from "react-chartjs-2";
-import { getHistoryData } from "../../helpers/chart";
-import numeral from "numeral";
-
+import { CASES_TYPE_PROPS, formatLargeNumber } from "../../utils";
+import { getHistoryData } from "../../utils/chart";
 interface LineGraphProps {
   casesType: TCasesType;
 }
@@ -27,8 +26,8 @@ const LineGraph: React.FC<LineGraphProps> = ({ casesType = "cases" }) => {
         data={{
           datasets: [
             {
-              backgroundColor: "rgba(204, 16, 52, 0.5)",
-              borderColor: "#cc1034",
+              backgroundColor: CASES_TYPE_PROPS[casesType].rgba,
+              borderColor: CASES_TYPE_PROPS[casesType].rgb,
               data,
             },
           ],
@@ -47,8 +46,7 @@ const LineGraph: React.FC<LineGraphProps> = ({ casesType = "cases" }) => {
             mode: "index",
             intersect: false,
             callbacks: {
-              label: (item: { value: number }) =>
-                numeral(item.value).format("+0,0"),
+              label: (item: { value: number }) => formatLargeNumber(item.value),
             },
           },
           scales: {
@@ -56,7 +54,7 @@ const LineGraph: React.FC<LineGraphProps> = ({ casesType = "cases" }) => {
               {
                 type: "time",
                 time: {
-                  format: "MM/DD/YY",
+                  parser: "MM/DD/YY",
                   tooltipFormat: "ll",
                 },
               },
@@ -67,7 +65,7 @@ const LineGraph: React.FC<LineGraphProps> = ({ casesType = "cases" }) => {
                   display: false,
                 },
                 ticks: {
-                  callback: (value: number) => numeral(value).format("0a"),
+                  callback: (value: number) => formatLargeNumber(value),
                 },
               },
             ],

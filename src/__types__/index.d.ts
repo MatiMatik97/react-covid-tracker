@@ -4,6 +4,7 @@ interface ICountryAPI {
     iso2: string;
     lat: number;
     long: number;
+    flag: string;
   };
   cases: number;
   recovered: number;
@@ -18,8 +19,10 @@ interface ICountry {
 type TCountries = ICountry[];
 
 interface IMapCountry {
+  name: string;
   lat: number;
   lon: number;
+  flag: string;
   cases: number;
   recovered: number;
   deaths: number;

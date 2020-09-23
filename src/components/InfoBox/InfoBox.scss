@@ -1,0 +1,32 @@
+.infoBox {
+  flex: 1;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5) !important;
+
+  &:hover {
+    box-shadow: 0 0 12px -4px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  &__title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+  }
+
+  &__today {
+    // color: #cc1034;
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__total {
+    color: #6c757d;
+    font-weight: 700 !important;
+  }
+}

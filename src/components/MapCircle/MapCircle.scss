@@ -1,0 +1,34 @@
+.mapCircle {
+  &__popup {
+    width: 150px;
+  }
+
+  &__flag {
+    height: 80px;
+    width: 100%;
+    background-size: contain;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+
+    img {
+      width: 100px;
+      border-radius: 5px;
+      box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__name {
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #555555;
+  }
+
+  &__cases,
+  &__recovered,
+  &__deaths {
+    font-size: 16px;
+    margin-top: 5px;
+  }
+}

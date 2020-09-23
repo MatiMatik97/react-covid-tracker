@@ -1,5 +1,6 @@
 import React from "react";
 import "./Table.scss";
+import { formatLargeNumber } from "../../utils";
 
 interface TableProps {
   tableData: TTableData;
@@ -7,18 +8,20 @@ interface TableProps {
 
 const Table: React.FC<TableProps> = ({ tableData }) => {
   return (
-    <div className="table">
-      {tableData
-        .sort((a: ITableData, b: ITableData) => b.cases - a.cases)
-        .map(({ country, cases }) => (
-          <tr>
-            <td>{country}</td>
-            <td>
-              <strong>{cases}</strong>
-            </td>
-          </tr>
-        ))}
-    </div>
+    <table className="table">
+      <tbody>
+        {tableData
+          .sort((a: ITableData, b: ITableData) => b.cases - a.cases)
+          .map(({ country, cases }, index) => (
+            <tr key={index}>
+              <td>{country}</td>
+              <td>
+                <strong>{formatLargeNumber(cases)}</strong>
+              </td>
+            </tr>
+          ))}
+      </tbody>
+    </table>
   );
 };
 

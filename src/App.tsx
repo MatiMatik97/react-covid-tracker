@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { Card, CardContent } from "@material-ui/core";
-import { getCountryInfo, getAllCountries } from "./helpers/country";
+import { getCountryInfo, getAllCountries } from "./utils/country";
+import { MAP_CENTER } from "./utils";
 import Header from "./layout/Header/Header";
 import Stats from "./layout/Stats/Stats";
 import Map from "./layout/Map/Map";
 import Table from "./layout/Table/Table";
 import LineGraph from "./layout/LineGraph/LineGraph";
-
-const MAP_CENTER = {
-  lat: 51.9194,
-  lng: 19.1451,
-};
 
 const App: React.FC = () => {
   const [countries, setCountries] = useState<TCountries>([]);
@@ -23,6 +19,7 @@ const App: React.FC = () => {
   const [mapCenter, setMapCenter] = useState<IMapCenter>(MAP_CENTER);
   const [mapZoom, setMapZoom] = useState<number>(3);
   const [mapCountries, setMapCountries] = useState<TMapCountries>([]);
+  const [casesType, setCasesType] = useState<TCasesType>("cases");
 
   const onCountryChange: FOnCountryChange = async (event) => {
     const countryCode = event.target.value;
@@ -55,8 +52,6 @@ const App: React.FC = () => {
     })();
   }, []);
 
-  console.log(mapCountries);
-
   return (
     <div className="app">
       <div className="app__left">
@@ -66,11 +61,15 @@ const App: React.FC = () => {
           selectedCountry={selectedCountry}
         />
 
-        <Stats countryInfo={countryInfo} />
+        <Stats
+          countryInfo={countryInfo}
+          casesType={casesType}
+          setCasesType={setCasesType}
+        />
 
         <Map
           countries={mapCountries}
-          casesType={"cases"}
+          casesType={casesType}
           center={mapCenter}
           zoom={mapZoom}
         />
@@ -78,11 +77,11 @@ const App: React.FC = () => {
 
       <Card className="app__right">
         <CardContent>
-          <h3>Live cases by country</h3>
+          <h3>Cases by country</h3>
           <Table tableData={tableData} />
 
-          <h3>Worldwide new cases</h3>
-          <LineGraph casesType={"cases"} />
+          <h3>History graph - {casesType}</h3>
+          <LineGraph casesType={casesType} />
         </CardContent>
       </Card>
     </div>

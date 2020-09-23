@@ -1,4 +1,4 @@
-import { apiRequest } from "./";
+import { apiRequest } from ".";
 
 export const getHistoryData = async (
   url: string,

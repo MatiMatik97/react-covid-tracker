@@ -1,7 +1,11 @@
-@import "../../styles/variables";
 @import "../../styles/mixins";
 
-.header{
-    @include displayFlex(space-between, center);
-    margin-bottom: 20px;
+.header {
+  @include displayFlex(space-between, center);
+  margin-bottom: 20px;
+
+  &__form {
+    background-color: white;
+    box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+  }
 }
