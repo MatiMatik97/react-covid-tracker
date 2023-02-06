@@ -41,7 +41,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({
           className="infoBox__today"
           style={{ color: CASES_TYPE_PROPS[casesType].rgb }}
         >
-          {formatLargeNumber(today)}
+          {formatLargeNumber(today)} Today
         </h2>
 
         <Typography className="infoBox__total" color="textSecondary">

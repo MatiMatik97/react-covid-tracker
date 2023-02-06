@@ -4,7 +4,7 @@ export const apiRequest = async <T>(url: string): Promise<T> => {
   try {
     const response = await fetch(url);
     return response.json() as Promise<T>;
-  } catch (error) {
+  } catch (error : any) {
     throw new Error(error);
   }
 };

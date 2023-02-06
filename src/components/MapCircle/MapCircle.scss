@@ -4,10 +4,9 @@
   }
 
   &__flag {
-    height: 80px;
+    height: 90px;
     width: 100%;
-    background-size: contain;
-    object-fit: contain;
+    background-size: cover;
     border-radius: 8px;
     box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
 
